@@ -1,0 +1,93 @@
+/*
+ * Copyright (C) u-blox Melbourn Ltd
+ * u-blox Melbourn Ltd, Melbourn, UK
+ *
+ * All rights reserved.
+ *
+ * This source file is the sole property of u-blox Melbourn Ltd.
+ * Reproduction or utilisation of this source in whole or part is
+ * forbidden without the written consent of u-blox Melbourn Ltd.
+ */
+
+#ifndef _UTILITIES_H_
+#define _UTILITIES_H_
+
+// ----------------------------------------------------------------
+// COMPILE-TIME CONSTANTS
+// ----------------------------------------------------------------
+
+/** Helper to make sure that lock/unlock pairs are always balanced.
+ */
+#define MTX_LOCK(x)         { xSemaphoreTake(x)
+
+/** Helper to make sure that lock/unlock pairs are always balanced.
+ */
+#define MTX_UNLOCK(x)       } xSemaphoreGive(x)
+
+#ifndef ARRAY_SIZE
+/** Get the number of items in an array.
+ */
+ #define ARRAY_SIZE(x)  (sizeof(x) / sizeof(x[0]))
+#endif
+
+#ifndef xstr
+/** Stringify a macro, from
+ * https://stackoverflow.com/questions/2653214/stringification-of-a-macro-value.
+ * Use xstr() on a #define to turn blah into "blah", for instance, given:
+ *
+ * #define thingy blah
+ *
+ * ...then xstr(thingy) would return "blah".
+ */
+# define xstr(a) str(a)
+# define str(a) #a
+#endif
+
+/** Fend off unused variable warnings.
+ */
+#define UNUSED(x) (void)(x)
+
+// ----------------------------------------------------------------
+// VARIABLES
+// ----------------------------------------------------------------
+
+// ----------------------------------------------------------------
+// FUNCTIONS
+// ----------------------------------------------------------------
+
+/** Convert a hex string of a given length into a sequence of bytes, returning the
+ * number of bytes written.
+ *
+ * @param pInBuf    pointer to the input string.
+ * @param lenInBuf  length of the input string (not including any terminator).
+ * @param pOutBuf   pointer to the output buffer.
+ * @param lenOutBuf length of the output buffer.
+ * @return          the number of bytes written.
+ */
+int utilitiesHexStringToBytes(const char *pInBuf, int lenInBuf, char *pOutBuf, int lenOutBuf);
+
+/** Convert an array of bytes into a hex string, returning the number of bytes
+ * written.  The hex string is NOT null terminated.
+ *
+ * @param pInBuf    pointer to the input buffer.
+ * @param lenInBuf  length of the input buffer.
+ * @param pOutBuf   pointer to the output buffer.
+ * @param lenOutBuf length of the output buffer.
+ * @return          the number of bytes in the output hex string.
+ */
+int utilitiesBytesToHexString(const char *pInBuf, int lenInBuf, char *pOutBuf, int lenOutBuf);
+
+/** A simple implementation of atoi() for positive, perfectly
+ * formed numbers.  Needed in order to avoid using atoi() as
+ * that requires some obscure RTX configuration to do with
+ * OS_THREAD_LIBSPACE_NUM.
+ *
+ * @param pBuf    pointer to the input buffer, which must be
+ *                a NULL terminated string.
+ * @return        the number contained in the string.
+ */
+int asciiToInt(const char *pBuf);
+
+#endif // _UTILITIES_H_
+
+// End Of File
