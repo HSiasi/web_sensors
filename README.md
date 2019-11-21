@@ -1,4 +1,5 @@
-# Introduction to WEB_SENSORS application
+# Introduction to WEB_SENSORS
+
 This repo contains the SW that is the WEB_SENSORS device-side application, intended to run on a NINA-W10 module, which contains an ESP32 chip.  The HW repo for the associated WHRE application board can be found [here](https://github.com/u-blox/whre-prototype).
 
 This repo can be used in:
