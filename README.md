@@ -1,4 +1,4 @@
-# Introduction to WEB_SENSORS APPLICATION
+# Introduction to WEB_SENSORS application
 This repo contains the SW that is the WEB_SENSORS device-side application, intended to run on a NINA-W10 module, which contains an ESP32 chip.  The HW repo for the associated WHRE application board can be found [here](https://github.com/u-blox/whre-prototype).
 
 This repo can be used in:
@@ -211,18 +211,7 @@ To check that the build/download has worked, attach an `EVK-NINA-W10` board or a
 5812:cb_mjs.c:00328: mJS error 7
 ```
 
-## Editing/Downloading Javascript
-The simplest way of doing this is to install [MS Visual Studio Code](https://code.visualstudio.com/download).  With this installed, got to `View`->`Extensions` and search for "u-blox Script IDE"; install this extension.  Now do `File`->`Open folder` and open the folder `component\cb_rtsl_utils\scripting`.  The default script file `init.js` is in that folder.  With that script file opened press `CTRL-SHIFT-P`, select the command `u-blox: Select serial port` and chose the serial port to which `NINA-W1`'s AT UART interface is connected.  Then press `CTRL-SHIFT-P` again and select the command `u-blox: Send files to device`; this should download the script file to the target (using the AT command `AT+UDWNFILE`).
 
-Reset the target and your newly downloaded `init.js` script should be loaded and executed.  To check what's going on take a look at the output from the logging COM port and you should see debug prints from your code's execution.
 
-### If Your Script Causes The Target To Crash
-If your script causes the target to crash then you're a bit stuffed as you won't be able to download a new script 'cos the target has crashed.  To get out of this situation, connect a terminal to the AT-command COM port and put the following into your copy buffer:
 
-```
-AT+UFACTORY
-AT+CPWROFF
-```
-
-Reset the target and, as soon as you see the `+STARTUP` string come out, paste your copy buffer into the terminal window.  This should erase any stored scripts and reset `NINA-W1`.# web_sensors
 # web_sensors
