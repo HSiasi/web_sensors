@@ -1,10 +1,10 @@
-# Introduction
-This repo contains the SW that is the WHRE device-side application, intended to run on a NINA-W10 module, which contains an ESP32 chip.  The HW repo for the associated WHRE application board can be found [here](https://github.com/u-blox/whre-prototype).
+# Introduction to WEB_SENSORS APPLICATION
+This repo contains the SW that is the WEB_SENSORS device-side application, intended to run on a NINA-W10 module, which contains an ESP32 chip.  The HW repo for the associated WHRE application board can be found [here](https://github.com/u-blox/whre-prototype).
 
-This repo can be used in two ways:
+This repo can be used in:
 
 1.  as a standalone C environment directly under ESP32/ESP_IDF (without the WHRE device-side application),
-2.  as part of the u-blox/Connect Blue Javascript environment (including the WHRE device-side application).
+
 
 # Standalone C Usage Directly Under ESP32/ESP_IDF
 The components of this repo can be built, run (on an ESP32 platform such as `EVK-NINA-W10` or a WHRE application board) and unit tested as C code directly under ESP32.  Only a rudimentary application is provided since the application support is intended to be provided by the u-blox/Connect Blue Javascript world; if you want the full WHRE device-side application, please look at that entry in this `README.md` file instead.
