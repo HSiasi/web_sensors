@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LWM2M xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.openmobilealliance.org/tech/profiles/LWM2M.xsd">
+	<Object ObjectType="MODefinition">
+		<Name>Modem Configuration</Name>
+		<Description1><![CDATA[This object specifies resources for power saving configuration of modem as well as controlling which RAT is selected in a multi RAT modem when appropriate. Apart from RAT List resource all the other resources of this object are already defined in OMA Cellular Connectivity Object, ID 10. Therefore, if RAT List resource is not required, it's recommended to use standard object instead of this one. ]]></Description1>
+		<ObjectID>33051</ObjectID>
+		<ObjectURN>urn:oma:lwm2m:oma:nnn:1.0</ObjectURN>
+		<LWM2MVersion>1.0</LWM2MVersion>
+		<ObjectVersion>1.0</ObjectVersion>
+		<MultipleInstances>Single</MultipleInstances>
+		<Mandatory>Optional</Mandatory>
+		<Resources>
+			<Item ID="1">
+				<Name>PSM Timer</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units>s</Units>
+				<Description><![CDATA[Power saving mode (PSM) timer as defined in [3GPP-TS_23.682]. PSM Timer = Extended T3412. Max interval between periodic TAU if there is no other transmission from the device. During most of this time the device is considered as unreachable and can therefore go into a deep sleep mode while keeping the PDN connection(s) active.]]></Description>
+			</Item>
+			<Item ID="2">
+				<Name>Active Timer</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Opaque</Type>
+				<RangeEnumeration>16 bit</RangeEnumeration>
+				<Units>s</Units>
+				<Description><![CDATA[Active timer = T3324 as defined in [3GPP-TS_24.008]. The time the UE has to remain reachable after transitioning to idle state in case there is pending data from the NW to send out. At the end of T3324 UE can go into a deep sleep mode while keeping the PDN connection(s) active.]]></Description>
+			</Item>
+			<Item ID="3">
+				<Name>eDRX</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Opaque</Type>
+				<RangeEnumeration>8 bit</RangeEnumeration>
+				<Units>s</Units>
+				<Description><![CDATA[Extended DRX parameters (Paging Time Window and eDRX value) for WB-S1 mode which the UE can request from the network. This resource is encoded as octet 3 in [3GPP-TS_24.008, clause 10.5.5.32].]]></Description>
+			</Item>
+			<Item ID="4">
+				<Name>RAT List</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Multiple</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[Ordered list of RATs that can be used by the device, the first on the list being the highest priority/most preferred one.This parameter can be used to operate the modem in single RAT mode or select a subset, e.g. NB-IoT and 2G in case of R4?]]></Description>
+			</Item>
+			<Item ID="5">
+				<Name>Serving PLMN Rate Control</Name>
+				<Operations>R</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[Applicable only when Signalling Radio Bearers are used to transfer data, Data over NAS (DoNAS), it indicates the maximum number of allowed uplink PDU transmissions per 6 minute interval aggregated across all PDN connections. See [3GPP-TS_23.401], octet 3 to 4 of the Serving PLMN rate control IE.]]></Description>
+			</Item>
+		</Resources>
+		<Description2 />
+	</Object>
+</LWM2M>

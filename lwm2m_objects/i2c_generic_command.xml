@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LWM2M xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.openmobilealliance.org/tech/profiles/LWM2M.xsd">
+	<Object ObjectType="MODefinition">
+		<Name>I2C Generic Command</Name>
+		<Description1 />
+		<ObjectID>33050</ObjectID>
+		<ObjectURN>urn:oma:lwm2m:oma:33050:1.0</ObjectURN>
+		<LWM2MVersion>1.0</LWM2MVersion>
+		<ObjectVersion>1.0</ObjectVersion>
+		<MultipleInstances>Multiple</MultipleInstances>
+		<Mandatory>Optional</Mandatory>
+		<Resources>
+			<Item ID="1">
+				<Name>Device I2C Address</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration>0..127</RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[The 7-bit I2C address of the device.]]></Description>
+			</Item>
+			<Item ID="2">
+				<Name>Device Name</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>String</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[String   Human readable name of the device, e.g. LIS2DW.]]></Description>
+			</Item>
+			<Item ID="3">
+				<Name>Command Name</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>String</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[Name of command this instance of object refers to, e.g. soft reset, measurement command, etc.]]></Description>
+			</Item>
+			<Item ID="4">
+				<Name>Trigger Condition</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[Enumeration giving the trigger condition for this sequence; e.g. 0=immediate, 1=on system wake-up, 2=at device initialisation.]]></Description>
+			</Item>
+			<Item ID="5">
+				<Name>Write Sequence</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Multiple</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration>0..255</RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[Command bytes to write to the I2C device]]></Description>
+			</Item>
+			<Item ID="6">
+				<Name>Write Success</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Boolean</Type>
+				<RangeEnumeration>0..127</RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[Set to true if a write succeeds, false if a write fails.]]></Description>
+			</Item>
+			<Item ID="7">
+				<Name>Delay</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[Optional delay between write and read sequences in units of micro seconds?]]></Description>
+			</Item>
+			<Item ID="8">
+				<Name>Response Size</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration>0..127</RangeEnumeration>
+				<Units>B</Units>
+				<Description><![CDATA[Number of information bytes received from I2C device as a response to the issued command.]]></Description>
+			</Item>
+            <Item ID="9">
+				<Name>Read Response</Name>
+				<Operations>R</Operations>
+				<MultipleInstances>Multiple</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration>0..255</RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[The bytes read from I2C device after the command is sent to the device]]></Description>
+			</Item>
+			<Item ID="10">
+				<Name>Read Timestamp</Name>
+				<Operations>R</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Time</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[]]></Description>
+			</Item>
+		</Resources>
+		<Description2 />
+	</Object>
+</LWM2M>

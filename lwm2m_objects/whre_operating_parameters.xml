@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LWM2M xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.openmobilealliance.org/tech/profiles/LWM2M.xsd">
+	<Object ObjectType="MODefinition">
+		<Name>WHRE Operating Parameters</Name>
+		<Description1><![CDATA[This object provides a range of parameters that can be configured to control dynamic behaviour of a WHRE device]]></Description1>
+		<ObjectID>33052</ObjectID>
+		<ObjectURN>urn:oma:lwm2m:oma:nn:1.0</ObjectURN>
+		<LWM2MVersion>1.0</LWM2MVersion>
+		<ObjectVersion>1.0</ObjectVersion>
+		<MultipleInstances>Single</MultipleInstances>
+		<Mandatory>Optional</Mandatory>
+		<Resources>
+			<Item ID="1">
+				<Name>Host Wake up Interval</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units>s</Units>
+				<Description><![CDATA[Max interval between successive  wake ups for the host. It defines effective sampling rate of sensors.]]></Description>
+			</Item>
+			<Item ID="2">
+				<Name>Reporting Interval</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units>s</Units>
+				<Description><![CDATA[Max interval between successive sensor reports. It should be n*Host wake up interval, where n=>1. This is equivalent to pmax for the observe]]></Description>
+			</Item>
+			<Item ID="3">
+				<Name>Host Minimum Sleep Interval</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units>s</Units>
+				<Description><![CDATA[Minimum interval between wake ups. Host will ignore wake up signals from external sensors.]]></Description>
+			</Item>
+			<Item ID="4">
+				<Name>Minimum Modem up Time</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units>s</Units>
+				<Description><![CDATA[Minimum interval modem, e.g. SARA-R4, should stay powered on after wake up to be able to receive downlink messages from LwM2M server ]]></Description>
+			</Item>
+		</Resources>
+		<Description2><![CDATA[]]></Description2>
+	</Object>
+</LWM2M>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LWM2M xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.openmobilealliance.org/tech/profiles/LWM2M.xsd">
+	<Object ObjectType="MODefinition">
+		<Name>Location Application Configuration</Name>
+		<Description1><![CDATA[This object can be used to configure how the device determines location fix and desired accuracy versus time taken to produce the result.]]></Description1>
+		<ObjectID>33053</ObjectID>
+		<ObjectURN>urn:oma:lwm2m:oma:nnn:1.0</ObjectURN>
+		<LWM2MVersion>1.0</LWM2MVersion>
+		<ObjectVersion>1.0</ObjectVersion>
+		<MultipleInstances>Single</MultipleInstances>
+		<Mandatory>Optional</Mandatory>
+		<Resources>
+			<Item ID="1">
+				<Name>WiFi Scan Required</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Boolean</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[Indicates if Wi-Fi scan is to be used as part of location fix.]]></Description>
+			</Item>
+			<Item ID="2">
+				<Name>GNSS Required for Location Fix</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Boolean</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units></Units>
+				<Description><![CDATA[Indicates if GNSS module is to be used during location fix]]></Description>
+			</Item>
+			<Item ID="3">
+				<Name>GNSS Location Radius</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Float</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units>m</Units>
+				<Description><![CDATA[Accuracy required from GNSS device when used for location]]></Description>
+			</Item>
+			<Item ID="4">
+				<Name>GNSS Allotted Location Establishment Time</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Mandatory</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration></RangeEnumeration>
+				<Units>s</Units>
+				<Description><![CDATA[Maximum allotted time for the GNSS to obtain a fix on location.]]></Description>
+			</Item>
+		</Resources>
+		<Description2 />
+	</Object>
+</LWM2M>
