@@ -225,3 +225,4 @@ AT+CPWROFF
 ```
 
 Reset the target and, as soon as you see the `+STARTUP` string come out, paste your copy buffer into the terminal window.  This should erase any stored scripts and reset `NINA-W1`.# web_sensors
+# web_sensors
