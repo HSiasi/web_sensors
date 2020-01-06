@@ -66,7 +66,7 @@
 #define WHRE_LWM2M_SERVER_SHORT_ID          100
 
 // The OMA IDs for the custom objects
-#define LWM2M_OBJECT_OMA_ID_I2C_GENERIC_COMMAND        33050
+#define LWM2M_OBJECT_OMA_ID_I2C_GENERIC_COMMAND               33059 //33050
 
 // Instances to use for objects
 #define LWM2M_OBJECT_INSTANCE_ID_SECURITY              2
@@ -574,7 +574,7 @@ static int32_t i2cGenericCommandGetDelay(int32_t objectInstanceId,
 
 
 
-// return the value of 33050/1/5
+// return the value of 33059/1/5
 static int32_t web_sensor_demo(int32_t *v)
 {
     int32_t errorCode;
@@ -585,7 +585,7 @@ static int32_t web_sensor_demo(int32_t *v)
     resourceDescription.objectInstanceId = 1 ;
     // Delay resource
     resourceDescription.resourceOmaId = 5;
-    resourceDescription.resourceInstanceId = 0;
+    resourceDescription.resourceInstanceId = -1;
     resourceDescription.resourceType = LWM2M_RESOURCE_TYPE_INTEGER;
     errorCode = lwm2mResourceGet(&resourceDescription, &value, NULL);
     if (errorCode == 0) {
@@ -802,9 +802,9 @@ static int32_t createObjectWhreLwm2mServer(int32_t objectInstanceId,
                                              value, pObject);
         }
         if (errorCode == 0) {
-            // Add the single APN resource instance
-            value.pString = "11:0"; // MUST be this
-            errorCode = lwm2mResourcePrepare(10, -1, /* the APN resource */
+            // Add the single APN Link resource instance
+            value.pString = "11:0"; // Must be set to this, don't know why...
+            errorCode = lwm2mResourcePrepare(10, -1, /* the APN Link resource */
                                              LWM2M_RESOURCE_TYPE_OBJLINK,
                                              value, pObject);
         }
@@ -1244,8 +1244,8 @@ static bool doI2cDemo()
     int32_t delayUS;
     bool writeSuccess = false;
 	int32_t hamedsNewByte;
-	uint8_t firstArray[]     = {9, 255};
-	uint8_t hamedsNewArray[] = {0, 0};
+	uint8_t firstArray[]     = {0, 0}; //ori = {9, 255}
+	uint8_t hamedsNewArray[] = {9, 0}; //ori = {0, 0}
 	
 	//Power-up and measurement within 1 ms 
 	vTaskDelay((1 / 1000) / portTICK_PERIOD_MS);
@@ -1324,10 +1324,7 @@ void app_main()
             printf("Wake up at %d second(s), cause %d.\n", (int) now.tv_sec, wakeupCause);
         break;
     }
-    printf("fgvkj;nf\dk;jn \bnkj;\  jkp\n");
-	
-	
-	
+
     // Start everything up
     printf("MAIN: starting up...\n");
     if (init()) {
